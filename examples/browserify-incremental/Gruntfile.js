@@ -10,9 +10,9 @@ module.exports = function (grunt) {
         options: {
           //incremental: true,
           //watch: true,
-          //buildOnChange: true,
+          filterUnchanged: true,
           filterUnderscore: true,
-          filterEmpty: true,
+          filterNoRequire: true,
           external: ['jquery', 'moment']
           //browserifyOptions: {
           //  cacheDir: './cache'
