@@ -10,6 +10,7 @@ var Runner = require('../lib/runner');
 var path = require('path');
 var async = require('async');
 var browserify = require('browserify');
+var browserifyIncremental = require('browserify-incremental');
 var watchify = require('watchify');
 
 module.exports = Task;
@@ -33,6 +34,7 @@ Task.runTask = function (grunt, options, file, next) {
     writer: grunt.file,
     logger: grunt,
     browserify: browserify,
+    browserifyIncremental: browserifyIncremental,
     watchify: watchify
   });
   var files = grunt.file.expand({filter: 'isFile'}, file.src).map(function (f) {

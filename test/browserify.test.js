@@ -49,7 +49,7 @@ describe('grunt-browserify-runner', function () {
 
 
   context('when passing option of watch:true', function () {
-    var baseOpts = {watch:true};
+    var baseOpts = {executor: 'watchify'};
     it('invokes watchify instead of browserify', function (done) {
       var watchify = spyWatchify();
       var runner = createRunner(spyBrowserify(), watchify);
@@ -63,7 +63,7 @@ describe('grunt-browserify-runner', function () {
   context('when passing option of watch:true with hash of watchifyOptions', function () {
     var browserify = spyBrowserify();
     var watchifyOpts = {chokidar: {usePolling: true}};
-    var baseOpts = {watch:true, watchifyOptions: watchifyOpts};
+    var baseOpts = {executor: 'watchify', watchifyOptions: watchifyOpts};
     it('invokes watchify instead of browserify', function (done) {
       var watchify = spyWatchify();
       var runner = createRunner(browserify, watchify);
