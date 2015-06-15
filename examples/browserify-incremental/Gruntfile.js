@@ -8,8 +8,13 @@ module.exports = function (grunt) {
           dest: 'dist'
         }],
         options: {
-          incremental: true,
-          external: ['jquery', 'moment']
+          //incremental: true,
+          //watch: true,
+          buildOnChange: true,
+          external: ['jquery', 'moment'],
+          //browserifyOptions: {
+          //  cacheDir: './cache'
+          //}
         }
       }
     }
