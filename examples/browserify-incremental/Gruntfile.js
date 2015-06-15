@@ -11,7 +11,7 @@ module.exports = function (grunt) {
           //incremental: true,
           //watch: true,
           //buildOnChange: true,
-          underscoreFilter: true,
+          filterUnderscore: true,
           filterEmpty: true,
           external: ['jquery', 'moment']
           //browserifyOptions: {
