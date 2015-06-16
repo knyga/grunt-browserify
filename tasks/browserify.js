@@ -12,6 +12,8 @@ var async = require('async');
 var browserify = require('browserify');
 var browserifyIncremental = require('browserify-incremental');
 var watchify = require('watchify');
+var cache = require('../lib/cache').read();
+var _ = require('lodash');
 
 module.exports = Task;
 
@@ -23,19 +25,24 @@ function Task (grunt) {
       banner: ''
     });
 
+    var cacheData = _.clone(cache.all());
+    cache.clean()
+        .flush();
+
     async.each(this.files, function (file, next) {
-      Task.runTask(grunt, options, file, next);
+      Task.runTask(grunt, options, cacheData, file, next);
     }, this.async());
   });
 }
 
-Task.runTask = function (grunt, options, file, next) {
+Task.runTask = function (grunt, options, cacheData, file, next) {
   var runner = new Runner({
     writer: grunt.file,
     logger: grunt,
     browserify: browserify,
     browserifyIncremental: browserifyIncremental,
-    watchify: watchify
+    watchify: watchify,
+    cacheData: cacheData
   });
   var files = grunt.file.expand({filter: 'isFile'}, file.src).map(function (f) {
     return path.resolve(f);

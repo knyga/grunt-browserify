@@ -7,5 +7,4 @@ require('./mod-cde');
 require('./mod-d');
 require('./mod-e');
 require('./test');
-require('underscore');
 require('async');
