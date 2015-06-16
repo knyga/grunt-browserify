@@ -13,6 +13,7 @@ module.exports = function (grunt) {
           filterUnchanged: true,
           filterUnderscore: true,
           filterNoRequire: true,
+          refuseEmptyInput: true,
           external: ['jquery', 'moment']
           //browserifyOptions: {
           //  cacheDir: './cache'
